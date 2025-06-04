@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.XR.ARFoundation;
 
 namespace CuteDuckGame
 {
@@ -28,6 +29,26 @@ namespace CuteDuckGame
         public static Action<GamePhase> OnPhaseChanged;
         public static Action<string> OnPhaseMessage;
         
+        [Header("AR Plane Control")]
+        [SerializeField] private ARPlaneManager arPlaneManager;
+        private void SetARPlanesVisible(bool visible)
+        {
+            if (arPlaneManager == null) return;
+    
+            // ARPlaneManager 활성화/비활성화
+            arPlaneManager.enabled = visible;
+    
+            // 기존 Plane들 숨김/표시
+            foreach (var plane in arPlaneManager.trackables)
+            {
+                if (plane != null && plane.gameObject != null)
+                {
+                    plane.gameObject.SetActive(visible);
+                }
+            }
+    
+            Debug.Log($"[GameFlowController] AR Planes {(visible ? "활성화" : "비활성화")}");
+        }
         private void Start()
         {
             Debug.Log("[GameFlowController] 게임 플로우 시작");
@@ -85,9 +106,11 @@ namespace CuteDuckGame
                 case GamePhase.Ready:
                     OnPhaseMessage?.Invoke("게임을 시작할 준비가 완료되었습니다! 화면을 터치하여 맵을 생성하세요.");
                     uiManager.EnablePlayButton(true);
+                    SetARPlanesVisible(true);
                     break;
                     
                 case GamePhase.Connecting:
+                    SetARPlanesVisible(false);
                     // OnPhaseMessage?.Invoke("다른 플레이어를 찾는 중...");
                     // arController.SetIndicatorEnabled(false); // 연결 중에는 터치 비활성화
                     // uiManager.ShowPanel("ConnectionPanel");

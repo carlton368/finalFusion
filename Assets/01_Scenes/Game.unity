@@ -1981,6 +1981,7 @@ MonoBehaviour:
   arController: {fileID: 459717810}
   gameSession: {fileID: 1905349103}
   currentPhase: 0
+  arPlaneManager: {fileID: 459717809}
 --- !u!1 &1259255697
 GameObject:
   m_ObjectHideFlags: 0
