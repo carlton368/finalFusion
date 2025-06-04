@@ -84,15 +84,13 @@ namespace CuteDuckGame
                     
                 case GamePhase.Ready:
                     OnPhaseMessage?.Invoke("게임을 시작할 준비가 완료되었습니다! 화면을 터치하여 맵을 생성하세요.");
-                    // arController.SetIndicatorEnabled(false); // ← 이 줄을 주석처리하여 터치 입력 유지
-                    arController.SetIndicatorEnabled(true); // 터치 입력을 계속 활성화
                     uiManager.EnablePlayButton(true);
                     break;
                     
                 case GamePhase.Connecting:
-                    OnPhaseMessage?.Invoke("다른 플레이어를 찾는 중...");
-                    arController.SetIndicatorEnabled(false); // 연결 중에는 터치 비활성화
-                    uiManager.ShowPanel("ConnectionPanel");
+                    // OnPhaseMessage?.Invoke("다른 플레이어를 찾는 중...");
+                    // arController.SetIndicatorEnabled(false); // 연결 중에는 터치 비활성화
+                    // uiManager.ShowPanel("ConnectionPanel");
                     break;
                     
                 case GamePhase.Playing:

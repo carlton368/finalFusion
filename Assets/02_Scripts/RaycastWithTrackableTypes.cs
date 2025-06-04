@@ -13,6 +13,8 @@ namespace CuteDuckGame
     {
         [Header("AR 컴포넌트")] [SerializeField] private GameObject indicator;
         [Header("유저별 맵 프리팹")] [SerializeField] private GameObject mapPrefab;
+        
+        private GameObject placededMap;
         [SerializeField] private ARRaycastManager raycastManager;
 
         private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -25,7 +27,7 @@ namespace CuteDuckGame
 
         private void Start()
         {
-            indicator.SetActive(false);
+            indicator.SetActive(true);
             raycastManager = GetComponent<ARRaycastManager>();
             
             // mapPrefab 할당 확인
@@ -41,7 +43,7 @@ namespace CuteDuckGame
             {
                 DetectGround();
 
-                if (Input.touchCount > 0)
+                if (indicator.activeInHierarchy && Input.touchCount > 0)
                 {
                     Touch touch = Input.GetTouch(0);
                     
@@ -56,7 +58,13 @@ namespace CuteDuckGame
                     if (touch.phase == TouchPhase.Began)
                     {
                         Debug.Log("화면 터치 시작");
-                        CreateMap();
+                        if (!placededMap)
+                            CreateMap();
+                        else
+                        {
+                            ChangeMapPosition();
+                            Debug.Log("맵 위치 변경");
+                        }
                     }
 
                     if (touch.phase == TouchPhase.Ended)
@@ -65,6 +73,11 @@ namespace CuteDuckGame
                     }
                 }
             }
+        }
+
+        private void ChangeMapPosition()
+        {
+            placededMap.transform.position = currentSelectedPosition;
         }
 
         private void CreateMap()
@@ -88,8 +101,8 @@ namespace CuteDuckGame
             Vector3 spawnPosition = StaticData.GetCurrentSpawnPosition();
             Quaternion spawnRotation = indicator != null ? indicator.transform.rotation : Quaternion.identity;
             
-            GameObject createdMap = Instantiate(mapPrefab, spawnPosition, spawnRotation);
-            Debug.Log($"맵 생성 완료: {createdMap.name} at {spawnPosition}");
+            placededMap = Instantiate(mapPrefab, spawnPosition, spawnRotation);
+            Debug.Log($"맵 생성 완료: {placededMap.name} at {spawnPosition}");
         }
 
         // UI 터치 감지 메서드 추가
@@ -115,12 +128,9 @@ namespace CuteDuckGame
                 indicator.transform.position += indicator.transform.up * 0.1f;
 
                 Vector3 newPosition = hits[0].pose.position;
-                if (Vector3.Distance(currentSelectedPosition, newPosition) > 0.1f)
-                {
-                    currentSelectedPosition = newPosition;
-                    StaticData.SetInitialSpawnPos(currentSelectedPosition);
-                    OnARPositionChanged?.Invoke(currentSelectedPosition);
-                }
+                currentSelectedPosition = newPosition;
+                StaticData.SetInitialSpawnPos(currentSelectedPosition);
+                OnARPositionChanged?.Invoke(currentSelectedPosition);
 
                 if (!hasValidPosition)
                 {
