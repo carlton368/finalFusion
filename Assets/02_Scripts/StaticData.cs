@@ -29,17 +29,17 @@ namespace CuteDuckGame
         }
         
         /// 룸 이름 설정
-        public static void SetRoomName(string roomName)
-        {
-            if (!string.IsNullOrEmpty(roomName))
-            {
-                CurrentRoomName = roomName;
-                Debug.Log($"[StaticData] 룸 이름 설정: {roomName}");
-                
-                // 이벤트 발생
-                OnRoomNameChanged?.Invoke(roomName);
-            }
-        }
+        // public static void SetRoomName(string roomName)
+        // {
+        //     if (!string.IsNullOrEmpty(roomName))
+        //     {
+        //         CurrentRoomName = roomName;
+        //         Debug.Log($"[StaticData] 룸 이름 설정: {roomName}");
+        //         
+        //         // 이벤트 발생
+        //         OnRoomNameChanged?.Invoke(roomName);
+        //     }
+        // }
         
         /// 현재 스폰 위치 반환
         public static Vector3 GetCurrentSpawnPosition()

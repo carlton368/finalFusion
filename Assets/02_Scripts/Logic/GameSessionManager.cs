@@ -17,7 +17,7 @@ namespace CuteDuckGame
     {
         [Header("게임 설정")]
         [SerializeField] private float duckSpawnCycle = 3f;
-        [SerializeField] private int maxDucksAtOnce = 10;
+        [SerializeField] private int maxDucksAtOnce = 20;
         
         [Header("오리 프리팹")]
         [SerializeField] private GameObject duckPrefab;  // Inspector에서 직접 할당

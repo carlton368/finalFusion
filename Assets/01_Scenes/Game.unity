@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 187645212}
   - component: {fileID: 187645211}
   m_Layer: 5
-  m_Name: Title Panel
+  m_Name: TitlePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 2044594}
-  mapPrefab: {fileID: 0}
+  mapPrefab: {fileID: 8955508558294540740, guid: 5e17ab576a4e64527958e1a4d9708dea, type: 3}
   raycastManager: {fileID: 459717808}
 --- !u!1 &603233981
 GameObject:
@@ -1672,12 +1672,12 @@ GameObject:
   - component: {fileID: 912118202}
   - component: {fileID: 912118201}
   m_Layer: 5
-  m_Name: AR Scan Panel
+  m_Name: ARScanPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &912118200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2327,7 +2327,7 @@ GameObject:
   - component: {fileID: 1512367055}
   - component: {fileID: 1512367054}
   m_Layer: 5
-  m_Name: Game Panel
+  m_Name: GamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2964,8 +2964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193e6243a2f844b43a6014351d9d735b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckSpawnCycle: 52
-  maxDucksAtOnce: 10
+  duckSpawnCycle: 3
+  maxDucksAtOnce: 20
   duckPrefab: {fileID: 8563356403336790171, guid: b0944abbb8436472081f18b24d3dcebb, type: 3}
   spawnCenterOffset: {x: 0, y: 0, z: 0}
   spawnRadius: 2
@@ -3149,7 +3149,7 @@ GameObject:
   - component: {fileID: 1991572667}
   - component: {fileID: 1991572666}
   m_Layer: 5
-  m_Name: Connection Panel
+  m_Name: ConnectionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

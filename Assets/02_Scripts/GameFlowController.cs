@@ -84,6 +84,7 @@ namespace CuteDuckGame
                     
                 case GamePhase.Ready:
                     OnPhaseMessage?.Invoke("게임을 시작할 준비가 완료되었습니다!");
+                    arController.SetIndicatorEnabled(false);
                     uiManager.EnablePlayButton(true);
                     break;
                     

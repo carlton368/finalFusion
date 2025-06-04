@@ -26,9 +26,7 @@ namespace CuteDuckGame
         private void Start()
         {
             indicator.SetActive(false);
-
-            if (raycastManager == null)
-                raycastManager = GetComponent<ARRaycastManager>();
+            raycastManager = GetComponent<ARRaycastManager>();
         }
 
         private void Update()
@@ -45,7 +43,11 @@ namespace CuteDuckGame
                     {
                         Debug.Log("화면 터치 시작");
                         CreateMap();
-                        
+                    }
+
+                    if (touch.phase == TouchPhase.Ended)
+                    {
+                        Debug.Log("화면 터치 끝");
                     }
                 }
             }

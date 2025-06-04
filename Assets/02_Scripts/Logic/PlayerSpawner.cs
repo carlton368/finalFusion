@@ -43,9 +43,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
         }
     }
     
-    /// <summary>
     /// 스폰 위치 계산
-    /// </summary>
     private Vector3 GetSpawnPosition(PlayerRef player)
     {
         Vector3 basePosition;
@@ -70,29 +68,5 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
         Vector3 finalPosition = basePosition + spawnOffset + randomOffset;
         
         return finalPosition;
-    }
-    
-    /// <summary>
-    /// 스폰 위치 미리보기 (Scene 뷰)
-    /// </summary>
-    private void OnDrawGizmosSelected()
-    {
-        Vector3 basePos = StaticData.HasValidSpawnPos() ? 
-                         StaticData.GetCurrentSpawnPosition() : 
-                         fallbackSpawnPos;
-        
-        Vector3 spawnPos = basePos + spawnOffset;
-        
-        // 기본 스폰 위치
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(spawnPos, Vector3.one * 0.5f);
-        
-        // 스폰 반경
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(spawnPos, spawnRadius);
-        
-        // 방향 표시
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(spawnPos, Vector3.forward * 1f);
     }
 }
