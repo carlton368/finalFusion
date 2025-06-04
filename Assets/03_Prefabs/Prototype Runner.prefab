@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3628173266546694825}
   - component: {fileID: 345659635118639507}
   - component: {fileID: 2933959356609958672}
-  - component: {fileID: 1206879839170534852}
   m_Layer: 0
   m_Name: Prototype Runner
   m_TagString: Untagged
@@ -145,17 +144,3 @@ MonoBehaviour:
   OnObjectExitAOI:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1206879839170534852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8874826739557097574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6abad1d86dd524e61b5f6777376d70eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 8563356403336790171, guid: bddce7b3bfc764c3bb8a672f2a5ddd02, type: 3}
-  _initialSpawnPos: {x: 0, y: 5, z: 0}

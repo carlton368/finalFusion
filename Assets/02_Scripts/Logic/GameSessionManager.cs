@@ -9,14 +9,14 @@ namespace CuteDuckGame
 {
     /// <summary>
     /// 간단한 오리게임 세션 관리자
-    /// - 52초 타이머
+    /// - 3초 타이머
     /// - 오리 프리팹 생성
     /// - 기본 UI 업데이트
     /// </summary>
     public class GameSessionManager : NetworkBehaviour
     {
         [Header("게임 설정")]
-        [SerializeField] private float duckSpawnCycle = 52f;
+        [SerializeField] private float duckSpawnCycle = 3f;
         [SerializeField] private int maxDucksAtOnce = 10;
         
         [Header("오리 프리팹")]
@@ -260,44 +260,6 @@ namespace CuteDuckGame
                 playerCountText.text = $"진짜 오리 {ConnectedPlayers}마리가 숨었다!?";
             }
         }
-        
-        // ==============================================
-        // 테스트 메서드
-        // ==============================================
-        
-        [ContextMenu("Test Spawn Duck")]
-        public void TestSpawnDuck()
-        {
-            if (Object.HasStateAuthority)
-            {
-                ShouldSpawnDucks = true;
-                StartCoroutine(StopSpawning());
-            }
-        }
-        
-        [ContextMenu("Update Spawn Center")]
-        public void TestUpdateSpawnCenter()
-        {
-            UpdateSpawnCenter();
-        }
-        
-        // ==============================================
-        // Scene 뷰 디버그
-        // ==============================================
-        
-        private void OnDrawGizmosSelected()
-        {
-            Vector3 center = useARPosition && StaticData.HasValidSpawnPos() ? 
-                           StaticData.GetCurrentSpawnPosition() + spawnCenterOffset : 
-                           spawnCenterOffset;
-            
-            // 스폰 센터
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(center, Vector3.one * 0.5f);
-            
-            // 스폰 반경
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(center, spawnRadius);
-        }
+    
     }
 }

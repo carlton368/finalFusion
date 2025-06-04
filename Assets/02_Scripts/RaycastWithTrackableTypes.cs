@@ -12,6 +12,7 @@ namespace CuteDuckGame
     public class RaycastWithTrackableTypes : MonoBehaviour
     {
         [Header("AR 컴포넌트")] [SerializeField] private GameObject indicator;
+        [Header("유저별 맵 프리팹")] [SerializeField] private GameObject mapPrefab;
         [SerializeField] private ARRaycastManager raycastManager;
 
         private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -19,8 +20,8 @@ namespace CuteDuckGame
         private bool hasValidPosition = false;
         private bool indicatorEnabled = true;
 
-        public static System.Action<Vector3> OnARPositionChanged;
-        public static System.Action<bool> OnARPositionValidityChanged;
+        public static Action<Vector3> OnARPositionChanged;
+        public static Action<bool> OnARPositionValidityChanged;
 
         private void Start()
         {
@@ -35,9 +36,29 @@ namespace CuteDuckGame
             if (indicatorEnabled)
             {
                 DetectGround();
+
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    Debug.Log("화면 터치 발생");
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        Debug.Log("화면 터치 시작");
+                        CreateMap();
+                        
+                    }
+                }
             }
         }
 
+        private void CreateMap()
+        {
+            Debug.Log("맵 생성 시작");
+            Instantiate(mapPrefab, StaticData.GetCurrentSpawnPosition(), indicator.transform.rotation);
+            Debug.Log("맵 생성 완료");
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
         private void DetectGround()
         {
             Vector2 screenPoint = new Vector2(Screen.width / 2, Screen.height / 2);
