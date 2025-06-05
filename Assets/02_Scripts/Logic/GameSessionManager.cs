@@ -92,9 +92,7 @@ namespace CuteDuckGame
         // 스폰 센터 업데이트
         // ==============================================
         
-        /// <summary>
         /// AR 위치를 기반으로 스폰 센터 업데이트
-        /// </summary>
         private void UpdateSpawnCenter()
         {
             dynamicSpawnCenter = StaticData.GetCurrentSpawnPosition();
@@ -199,7 +197,7 @@ namespace CuteDuckGame
     
             Vector3 spawnPos = dynamicSpawnCenter + randomOffset;
     
-            // 🔄 각 축별 랜덤 회전 설정 (더 직관적)
+            // 각 축별 랜덤 회전 설정 (더 직관적)
             Vector3 randomEulerAngles = new Vector3(
                 Random.Range(0f, 360f),    // X축 회전 (0~360도)
                 Random.Range(0f, 360f),    // Y축 회전 (0~360도)

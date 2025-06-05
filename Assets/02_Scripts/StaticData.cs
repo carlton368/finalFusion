@@ -5,7 +5,6 @@ namespace CuteDuckGame
 {
     public static class StaticData
     {
-        public static string LocalNickname;
         public static string CurrentRoomName = "123";
         
         // AR 위치 관련 추가
