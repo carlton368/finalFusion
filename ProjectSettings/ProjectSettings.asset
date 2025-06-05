@@ -82,7 +82,7 @@ PlayerSettings:
   androidApplicationEntry: 2
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 0
+  runInBackground: 1
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
   Force IOS Speakers When Recording: 0
@@ -142,11 +142,11 @@ PlayerSettings:
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1.1
   preloadedAssets:
-  - {fileID: -4383472679198512858, guid: 4cbab40e2e056435cbf07d378d9221bc, type: 2}
-  - {fileID: 6105791863136210813, guid: 3b7554aa290844e6ebac006bef0c8fbd, type: 2}
+  - {fileID: 4800000, guid: e7c77f6eaab324a819efdc13b8125a39, type: 3}
+  - {fileID: 4800000, guid: 6743a50a812740be8c0aa3fccc46fae9, type: 3}
+  - {fileID: -1228553529977732495, guid: 4cbab40e2e056435cbf07d378d9221bc, type: 2}
+  - {fileID: 6102526601718399943, guid: 3b7554aa290844e6ebac006bef0c8fbd, type: 2}
   - {fileID: 11400000, guid: 500ea4670ca1344089e4956bdee3c3f2, type: 2}
-  - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
-  - {fileID: 4800000, guid: 0945859e5a1034c2cb6dce53cb4fb899, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
