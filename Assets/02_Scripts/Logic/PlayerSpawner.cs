@@ -9,10 +9,6 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
     [Tooltip("플레이어 캐릭터 프리팹 (NetworkObject 포함)")]
     public GameObject PlayerPrefab;
     
-    [Header("스폰 위치 설정")]
-    //[SerializeField] private Vector3 spawnOffset = new Vector3(0, 1, 0);
-    //[SerializeField] private float spawnRadius = 2f;
-    
     [Header("Unity Events")]
     [SerializeField] private UnityEvent<PlayerRef> OnPlayerSpawned;
     [SerializeField] private UnityEvent<Vector3> OnSpawnPositionUsed;
