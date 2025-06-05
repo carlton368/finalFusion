@@ -91,13 +91,6 @@ namespace CuteDuckGame
                 return;
             }
             
-            // 유효한 AR 위치가 있는지 확인
-            if (!StaticData.HasValidSpawnPos())
-            {
-                Debug.LogWarning("[RaycastWithTrackableTypes] 유효한 AR 위치가 없습니다!");
-                return;
-            }
-            
             Vector3 spawnPosition = StaticData.GetCurrentSpawnPosition();
             Quaternion spawnRotation = indicator != null ? indicator.transform.rotation : Quaternion.identity;
             
@@ -105,9 +98,15 @@ namespace CuteDuckGame
             Debug.Log($"맵 생성 완료: {placededMap.name} at {spawnPosition}");
         }
 
-        // UI 터치 감지 메서드 추가
         private bool IsPointerOverUIObject(Vector2 touchPosition)
         {
+            // EventSystem이 준비되지 않았으면 false 반환
+            if (EventSystem.current == null)
+            {
+                Debug.LogWarning("[RaycastWithTrackableTypes] EventSystem이 아직 초기화되지 않았습니다.");
+                return false;
+            }
+    
             PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
             eventDataCurrentPosition.position = touchPosition;
             List<RaycastResult> results = new List<RaycastResult>();
@@ -129,7 +128,7 @@ namespace CuteDuckGame
 
                 Vector3 newPosition = hits[0].pose.position;
                 currentSelectedPosition = newPosition;
-                StaticData.SetInitialSpawnPos(currentSelectedPosition);
+                StaticData.SetSpawnPos(currentSelectedPosition);
                 OnARPositionChanged?.Invoke(currentSelectedPosition);
 
                 if (!hasValidPosition)

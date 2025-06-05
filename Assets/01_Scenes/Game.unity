@@ -2846,7 +2846,6 @@ GameObject:
   - component: {fileID: 1905349101}
   - component: {fileID: 1905349104}
   - component: {fileID: 1905349103}
-  - component: {fileID: 1905349102}
   m_Layer: 0
   m_Name: Network System
   m_TagString: Untagged
@@ -2869,28 +2868,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1905349102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905349100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6abad1d86dd524e61b5f6777376d70eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 8563356403336790171, guid: bddce7b3bfc764c3bb8a672f2a5ddd02, type: 3}
-  fallbackSpawnPos: {x: 0, y: 0, z: 0}
-  spawnOffset: {x: 0, y: 1, z: 0}
-  spawnRadius: 2
-  OnPlayerSpawned:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSpawnPositionUsed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1905349103
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,18 +9,15 @@ namespace CuteDuckGame
         public static string CurrentRoomName = "123";
         
         // AR 위치 관련 추가
-        public static Vector3 _initialSpawnPos = Vector3.zero;
-        public static bool HasValidSpawnPosition = false;
+        public static Vector3 _spawnPos;
         
         // 이벤트 - Action 사용
         public static Action<Vector3> OnSpawnPositionChanged;
-        public static Action<string> OnRoomNameChanged;
         
         /// 스폰 위치 설정
-        public static void SetInitialSpawnPos(Vector3 pos)
+        public static void SetSpawnPos(Vector3 pos)
         {
-            _initialSpawnPos = pos;
-            HasValidSpawnPosition = true;
+            _spawnPos = pos;
             
             Debug.Log($"[StaticData] 스폰 위치 설정: {pos}");
             
@@ -28,29 +25,10 @@ namespace CuteDuckGame
             OnSpawnPositionChanged?.Invoke(pos);
         }
         
-        /// 룸 이름 설정
-        // public static void SetRoomName(string roomName)
-        // {
-        //     if (!string.IsNullOrEmpty(roomName))
-        //     {
-        //         CurrentRoomName = roomName;
-        //         Debug.Log($"[StaticData] 룸 이름 설정: {roomName}");
-        //         
-        //         // 이벤트 발생
-        //         OnRoomNameChanged?.Invoke(roomName);
-        //     }
-        // }
-        
         /// 현재 스폰 위치 반환
         public static Vector3 GetCurrentSpawnPosition()
         {
-            return _initialSpawnPos;
-        }
-        
-        /// 유효한 스폰 위치가 있는지 확인
-        public static bool HasValidSpawnPos()
-        {
-            return HasValidSpawnPosition;
+            return _spawnPos;
         }
     }
 }

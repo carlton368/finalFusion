@@ -23,7 +23,7 @@ namespace CuteDuckGame
         [SerializeField] private GameObject duckPrefab;  // Inspector에서 직접 할당
         
         [Header("스폰 설정")]
-        [SerializeField] private Vector3 spawnCenterOffset = Vector3.zero;
+        //[SerializeField] private Vector3 spawnCenterOffset = Vector3.zero;
         [SerializeField] private float spawnRadius = 2f;
         [SerializeField] private bool useARPosition = true;
         
@@ -97,16 +97,8 @@ namespace CuteDuckGame
         /// </summary>
         private void UpdateSpawnCenter()
         {
-            if (useARPosition && StaticData.HasValidSpawnPos())
-            {
-                dynamicSpawnCenter = StaticData.GetCurrentSpawnPosition() + spawnCenterOffset;
-                Debug.Log($"[GameSessionManager] AR 위치 기반 스폰 센터: {dynamicSpawnCenter}");
-            }
-            else
-            {
-                dynamicSpawnCenter = spawnCenterOffset;
-                Debug.Log($"[GameSessionManager] 기본 스폰 센터 사용: {dynamicSpawnCenter}");
-            }
+            dynamicSpawnCenter = StaticData.GetCurrentSpawnPosition();
+            Debug.Log($"[GameSessionManager] AR 위치 기반 스폰 센터: {dynamicSpawnCenter}");
         }
         
         // ==============================================
